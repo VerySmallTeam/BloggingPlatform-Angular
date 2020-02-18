@@ -1,0 +1,7 @@
+#navigationBar{
+    position: sticky;
+    top: 0;
+  }
+  .dropdown-item:hover {
+     background-color: #40a3ff; 
+  }

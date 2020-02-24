@@ -1,0 +1,11 @@
+<cdk-virtual-scroll-viewport itemSize="100" class="post-scroll-viewport">
+<li *cdkVirtualFor="let post of dataSource">
+  <div *ngIf="post" class="post-item">
+    <div class="post-title">{{ post.title }}</div>
+    <div class="post-date">{{ post.dateAdded }}</div>
+  </div>
+  <div *ngIf="!post">
+    Loading ...
+  </div>
+</li>
+</cdk-virtual-scroll-viewport>

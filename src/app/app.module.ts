@@ -16,6 +16,9 @@ import { AlertifyService } from './services/alertify.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { HomeComponent } from './home/home.component';
+import { ScrollingModule} from '@angular/cdk/scrolling';
+import { HomeScrollComponent } from './home-scroll/home-scroll.component';
+import { LiveScrollingService } from './services/live-scrolling.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -26,7 +29,8 @@ export function tokenGetter() {
       AppComponent,
       NavComponent,
       RegisterComponent,
-      HomeComponent
+      HomeComponent,
+      HomeScrollComponent
    ],
    imports: [
       BrowserModule,
@@ -44,16 +48,18 @@ export function tokenGetter() {
       JwtModule.forRoot({
          config: {
             tokenGetter,
-            whitelistedDomains: ['localhost:5000', 'localhost:5001'],
-            blacklistedRoutes: ['localhost:5000/api/auth', 'localhost:5001/api/auth']
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
          }
-      })
+      }),
+      ScrollingModule
    ],
    providers: [
       AuthService,
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      LiveScrollingService
    ],
    bootstrap: [
       AppComponent

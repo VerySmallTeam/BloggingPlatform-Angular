@@ -27,7 +27,7 @@ export class PostsDataSource extends DataSource<Post | undefined> {
   private partSize = 10;
   private lastPart = 0;
 
-  constructor(private factService: LiveScrollingService) {
+  constructor(private postsService: LiveScrollingService) {
     super();
     this._fetchPosts();
   }
@@ -54,7 +54,7 @@ export class PostsDataSource extends DataSource<Post | undefined> {
   }
 
   private _fetchPosts(): void {
-      this.factService.getPosts().subscribe(res => {
+      this.postsService.getPosts().subscribe(res => {
         this.cachedPosts = this.cachedPosts.concat(res);
         this.dataStream.next(this.cachedPosts);
       });

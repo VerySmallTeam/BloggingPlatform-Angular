@@ -14,9 +14,8 @@ export class LiveScrollingService {
 
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl + 'home/');
-    // return this.http.get<Post[]>(this.baseUrl + 'home/' + '?partNumber=' + 2);
+  getPosts(part: number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.baseUrl + 'home/' + '?partNumber=' + part);
   }
 
 }

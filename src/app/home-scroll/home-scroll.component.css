@@ -13,15 +13,29 @@
   }
 */
 
-  .col-3 {
-    height: 20px;
-      font-size: 10pt;
+  .col-8 {
+    height: 40px;
+      font-size: 16pt;
       background-color: rgb(164, 181, 230);
+      text-align: right;
     }
+    .col-2 {
+      height: 40px;
+        font-size: 10pt;
+        background-color: rgb(164, 181, 230);
+        text-align: right;
+      }
+      .col-1 {
+        height: 40px;
+          font-size: 10pt;
+          background-color: rgb(164, 181, 230);
+          text-align: right;
+        }
+      
 
     .col-12 {
       height: 150px;
-      font-size: 20pt;
+      font-size: 6pt;
       background-color: rgb(255, 255, 255);
     }
   
@@ -52,10 +66,13 @@
       font-size: 12pt;
       background-color: burlywood;
     }
+    .container {
+      margin-bottom: 80px;
+    }
   
   cdk-virtual-scroll-viewport {
-    border: 1px solid #40a3ff;
-    border-radius: 5px;
+    /*border: 1px solid #40a3ff;
+    border-radius: 5px; */
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
@@ -66,4 +83,5 @@
 
  li {
   list-style-type: none;
+  height: 100%;
 }

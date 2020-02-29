@@ -26,10 +26,10 @@ export class PostsDataSource extends DataSource<Post | undefined> {
 
   private partSize = 10;
   private lastPart = 0;
-
+  private part = 1;
   constructor(private postsService: LiveScrollingService) {
     super();
-    this._fetchPosts();
+    this._fetchPosts(this.part);
   }
 
   connect(collectionViewer: CollectionViewer): Observable<(Post | undefined)[] | ReadonlyArray<Post | undefined>> {
@@ -43,7 +43,7 @@ export class PostsDataSource extends DataSource<Post | undefined> {
 
       if (currentPart > this.lastPart) {
         this.lastPart = currentPart;
-        this._fetchPosts();
+        this._fetchPosts(this.part++);
       }
     }));
     return this.dataStream;
@@ -53,8 +53,8 @@ export class PostsDataSource extends DataSource<Post | undefined> {
     this.subscription.unsubscribe();
   }
 
-  private _fetchPosts(): void {
-      this.postsService.getPosts().subscribe(res => {
+  private _fetchPosts(part: number): void {
+      this.postsService.getPosts(part).subscribe(res => {
         this.cachedPosts = this.cachedPosts.concat(res);
         this.dataStream.next(this.cachedPosts);
       });
